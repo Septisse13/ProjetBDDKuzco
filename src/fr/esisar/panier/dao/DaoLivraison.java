@@ -22,11 +22,11 @@ public class DaoLivraison implements LoDao<Livraison> {
 	@Override
 	public List<Livraison> find(String conditions) {
 		/*
-		 * SELECT dateLivraison FROM Livraison
+		 * SELECT dateLivraison, dateDebutSemestre FROM Livraison
 		 * WHERE (conditions);
 		 */
 		
-		String requete = " SELECT dateLivraison "
+		String requete = " SELECT dateLivraison, dateDebutSemestre "
 				+ "FROM Livraison"
 				+ "WHERE "
 				+ conditions
@@ -57,7 +57,17 @@ public class DaoLivraison implements LoDao<Livraison> {
 					d=sdf.parse(s);
 				} catch (ParseException e) {
 				}
-				Livraison p = new Livraison(d);
+				
+				s = resultats.getString(2);
+				sdf = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+				Date d2 = new Date();
+				try {
+					d2=sdf.parse(s);
+				} catch (ParseException e) {
+				}
+				
+				
+				Livraison p = new Livraison(d,d2);
 				liste.add(p);
 				encore = resultats.next();
 			}
@@ -127,11 +137,16 @@ public class DaoLivraison implements LoDao<Livraison> {
 	}
 	
 	// TODO getByDate(Date)
-	Livraison getByDate(String date){
+	public Livraison getByDate(String date){
 		List<Livraison> liste;
 		liste=find("dateLivraison="+date);
 		return liste.get(1);
 	}
 	// TODO getByCalendrier
+	public List<Livraison> getByCalendrier(String date){
+		List<Livraison> liste;
+		liste=find("dateDebutSemestre="+date);
+		return liste;
+	}
 
 }

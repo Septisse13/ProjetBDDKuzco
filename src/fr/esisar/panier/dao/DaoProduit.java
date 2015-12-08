@@ -63,7 +63,7 @@ public class DaoProduit implements LoDao<Produit> {
 		String requete = "INSERT INTO Produit VALUES ('"
 				+ newRecord.getNom()
 				+"','"
-				+ newRecord.getProducteurMail()
+				+ newRecord.getProducteur()
 				+ "',"
 				+ newRecord.getPrix()
 				+ ");";
@@ -93,7 +93,7 @@ public class DaoProduit implements LoDao<Produit> {
 		String requete = "UPDATE Produit SET prixUnitaire="
 				+ updateRecord.getPrix()
 				+ "AND mail='"
-				+ updateRecord.getProducteurMail()
+				+ updateRecord.getProducteur()
 				+ "' WHERE Produit.nomProduit='"
 				+ updateRecord.getNom()
 				+ "';";
