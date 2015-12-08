@@ -17,6 +17,7 @@ import java.util.Map.Entry;
 
 import fr.esisar.panier.connexionBDD.Connexion;
 import fr.esisar.panier.metier.Commande;
+import fr.esisar.panier.metier.Consommateur;
 import fr.esisar.panier.metier.LigneCommande;
 import fr.esisar.panier.metier.Livraison;
 import fr.esisar.panier.metier.Produit;
@@ -168,6 +169,12 @@ public class DaoCommande implements LoDao<Commande> {
 		List<Commande> liste;
 		liste=find("idCommande="+idCommande);
 		return liste.get(1);
+	}
+	
+	public List<Commande> getByConsommateur(Consommateur consommateur) {
+		List<Commande> liste;
+		liste=find("mail="+consommateur.getMail());
+		return liste;
 	}
 
 }
