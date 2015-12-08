@@ -101,6 +101,7 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 		}
 		catch(SQLException e){
 			System.out.println("Erreur d'exécution requête");
+			return false;
 		}
 		
 		c1 = Connexion.getConnection();
@@ -112,9 +113,10 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 		}
 		catch(SQLException e){
 			System.out.println("Erreur d'exécution requête");
+			return false;
 		}
 
-		return false;
+		return true;
 	}
 
 	@Override
@@ -140,9 +142,10 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 		}
 		catch(SQLException e){
 			System.out.println("Erreur d'exécution requête");
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
 
 	@Override
@@ -166,9 +169,10 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 		}
 		catch(SQLException e){
 			System.out.println("Erreur d'exécution requête");
+			return false;
 		}
 
-		return false;
+		return true;
 	}
 
 	@Override
