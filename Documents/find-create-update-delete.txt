@@ -1,0 +1,59 @@
+Producteur
+	find(conditions)
+		SELECT producteur.mail, nom, prenom FROM Producteur, Personne 
+		WHERE producteur.mail=personne.mail
+		AND (conditions);
+	create(Producteur)
+		//Créer un char en fonction du bool
+		INSERT INTO Personne VALUES (Producteur.getMail(), Producteur.getPrenom(), Producteur.getNom());
+		INSERT INTO Producteur VALUES (Producteur.getMail(),Producteur.getOrdreCheque(), char);
+	update(Producteur)
+		UPDATE Producteur SET ordreCheque=Producteur.getOrdreCheque()
+		WHERE Producteur.mail=Producteur.getMail();
+	delete(Producteur)
+		DELETE FROM Producteur WHERE Producteur.mail=Producteur.getMail();
+	getByProduit(ProduitX)
+		find("producteur.mail=ProduitX.getMail()")
+	getByPaid(boolean X : true 'T' et false 'F')
+		find("producteur.paimentProdBool='X'")
+Produit
+	find
+	create
+	update
+	delete
+	getByNom
+Commande
+	find
+	create
+	update
+	delete
+LigneCommande
+	find
+	create
+	update
+	delete
+Ferie
+	find
+	create
+	update
+	delete
+Livraison
+	find
+	create
+	update
+	delete
+Calendrier
+	find
+	create
+	update
+	delete
+BDE
+	find
+	create
+	update
+	delete
+Consommateur
+	find
+	create
+	update
+	delete
