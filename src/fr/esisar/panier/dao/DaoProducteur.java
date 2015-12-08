@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.esisar.panier.connexionBDD.Connexion;
@@ -40,7 +41,7 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 		}
 		
 		// Exploiter résultats : créer des objets producteurs pour chaque entrée et le mettre dans une liste
-		List<Producteur> liste;
+		List<Producteur> liste = new ArrayList<Producteur>();
 		try {
 			ResultSetMetaData rsmd = resultats.getMetaData();
 			int nbCols = rsmd.getColumnCount();
@@ -182,7 +183,7 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 	}
 	
 	
-	public Producteur getByPaid(boolean paid) {
+	public List<Producteur> getByPaid(boolean paid) {
 		char bool;
 		if(paid){
 			bool='t';
@@ -196,7 +197,7 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 		// Envoyer la requête -> find le fait
 		// Exploiter résultat -> find le fait
 		// Renvoyer List<Producteur>
-		return liste.get(1);
+		return liste;
 		
 	}
 
