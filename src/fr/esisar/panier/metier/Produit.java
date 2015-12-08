@@ -73,6 +73,4 @@ public class Produit {
 		this.producteurMail = producteurMail;
 		return true;
 	}
-	
-	
 }

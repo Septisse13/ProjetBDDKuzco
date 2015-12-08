@@ -2,6 +2,7 @@ package fr.esisar.panier.dao;
 
 import java.util.List;
 
+import fr.esisar.panier.metier.Commande;
 import fr.esisar.panier.metier.Consommateur;
 
 public class DaoConsommateur implements LoDao<Consommateur>, LoDaoPersonne<Consommateur> {
@@ -34,6 +35,11 @@ public class DaoConsommateur implements LoDao<Consommateur>, LoDaoPersonne<Conso
 	public boolean remove(Consommateur removeRecord) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public Consommateur getByCommande(Commande commande) {
+		return null;
+		
 	}
 
 }

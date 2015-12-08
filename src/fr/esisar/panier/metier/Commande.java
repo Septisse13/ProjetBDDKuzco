@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
+import fr.esisar.panier.dao.DaoConsommateur;
 import fr.esisar.panier.dao.DaoLigneCommande;
 
 public class Commande {
 	private int id;
 	private Map<Integer,LigneCommande> lignes;
 	private Livraison livraison;
+	private String mailConso;
 	
 	/**
 	 * 
@@ -78,6 +80,19 @@ public class Commande {
 		DaoLigneCommande daoLigne = new DaoLigneCommande();
 		daoLigne.update(updLigne);
 		return true;
+	}
+	
+	public String getMailConso() {
+		return mailConso;
+	}
+	public boolean setMailConso(String mailConso) {
+		if(mailConso == null || mailConso.isEmpty()) return false;
+		this.mailConso = mailConso;
+		return true;
+	}
+	public Consommateur getConso() {
+		DaoConsommateur dao = new DaoConsommateur();
+		return dao.getByCommande(this);
 	}
 	
 	

@@ -34,4 +34,6 @@ public class Consommateur extends Personne{
 	public void setHavePaid(boolean havePaid) {
 		this.havePaid = havePaid;
 	}
+	
+	
 }
