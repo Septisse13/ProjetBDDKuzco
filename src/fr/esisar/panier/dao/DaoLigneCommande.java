@@ -22,7 +22,6 @@ public class DaoLigneCommande implements LoDao<LigneCommande> {
 
 	@Override
 	public List<LigneCommande> find(String conditions) {
-		// TODO Auto-generated method stub
 		/*
 		 * SELECT idLigneCommande, idCommande, nomProduit, quantite, isDelivered  FROM LigneCommande
 		 * WHERE (conditions);
