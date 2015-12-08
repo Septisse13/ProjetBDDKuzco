@@ -3,6 +3,7 @@ package fr.esisar.panier.dao;
 import java.util.List;
 
 import fr.esisar.panier.metier.Calendrier;
+import fr.esisar.panier.metier.Livraison;
 
 public class DaoCalendrier implements LoDao<Calendrier> {
 
@@ -28,6 +29,11 @@ public class DaoCalendrier implements LoDao<Calendrier> {
 	public boolean remove(Calendrier removeRecord) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public Calendrier getByLivraison(Livraison livraison) {
+		// TODO
+		return null;
 	}
 
 }

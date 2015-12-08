@@ -10,6 +10,7 @@ import java.util.List;
 
 import fr.esisar.panier.connexionBDD.Connexion;
 import fr.esisar.panier.metier.Producteur;
+import fr.esisar.panier.metier.Produit;
 
 public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteur> {
 
@@ -203,6 +204,11 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 		// Renvoyer List<Producteur>
 		return liste;
 		
+	}
+	
+	public Producteur getByProduit(Produit produit) {
+		// TODO
+		return null;
 	}
 
 }

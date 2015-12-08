@@ -2,6 +2,7 @@ package fr.esisar.panier.metier;
 
 public class Producteur extends Personne {
 	private String ordreCheque;
+	private boolean paid;
 	
 	/**
 	 * @param mail
@@ -31,6 +32,14 @@ public class Producteur extends Personne {
 	public boolean setOrdreCheque(String ordreCheque) {
 		this.ordreCheque = ordreCheque;
 		return false;
+	}
+
+	public boolean isPaid() {
+		return paid;
+	}
+
+	public void setPaid(boolean paid) {
+		this.paid = paid;
 	}
 
 }

@@ -1,6 +1,9 @@
 package fr.esisar.panier.metier;
 
 import java.util.Date;
+import java.util.Map;
+
+import fr.esisar.panier.dao.DaoLivraison;
 
 public class Calendrier {
 	private Date begin;
@@ -8,6 +11,8 @@ public class Calendrier {
 	private Date dateLimPaiementConso;
 	private Date dateLimPaiementProd;
 	private Date dateLimCom;
+	
+	private Map<Date, Livraison> livraisons;
 	
 	private Calendrier() {
 		super();
@@ -28,8 +33,9 @@ public class Calendrier {
 	/**
 	 * @param begin the begin to set
 	 */
-	public void setBegin(Date begin) {
+	public boolean setBegin(Date begin) {
 		this.begin = begin;
+		return false;
 	}
 	/**
 	 * @return the end
@@ -42,7 +48,7 @@ public class Calendrier {
 	 */
 	public boolean setEnd(Date end) {
 		this.end = end;
-		return false;
+		return true;
 	}
 	/**
 	 * @return the dateLimPaiementConso
@@ -55,7 +61,7 @@ public class Calendrier {
 	 */
 	public boolean setDateLimPaiementConso(Date dateLimPaiementConso) {
 		this.dateLimPaiementConso = dateLimPaiementConso;
-		return false;
+		return true;
 	}
 	/**
 	 * @return the dateLimPaiementProd
@@ -68,7 +74,7 @@ public class Calendrier {
 	 */
 	public boolean setDateLimPaiementProd(Date dateLimPaiementProd) {
 		this.dateLimPaiementProd = dateLimPaiementProd;
-		return false;
+		return true;
 	}
 	/**
 	 * @return the dateLimCom
@@ -81,6 +87,14 @@ public class Calendrier {
 	 */
 	public boolean setDateLimCom(Date dateLimCom) {
 		this.dateLimCom = dateLimCom;
-		return false;
+		return true;
+	}
+	
+	public boolean addLivraison(Livraison newLivraison) {
+		livraisons.put(newLivraison.getDateLivraison(), newLivraison);
+		newLivraison.setCalendrierBegin(begin);
+		DaoLivraison dao = new DaoLivraison();
+		dao.create(newLivraison);
+		return true;
 	}
 }

@@ -1,10 +1,11 @@
 package fr.esisar.panier.metier;
 
+import fr.esisar.panier.dao.DaoProducteur;
+
 public class Produit {
 	private String nom;
 	private float prix;
-	
-	
+	private String producteurMail;
 	
 	/**
 	 * 
@@ -54,6 +55,20 @@ public class Produit {
 	public boolean setPrix(float prix) {
 		this.prix = prix;
 		return false;
+	}
+	
+	public String getProducteurMail() {
+		return producteurMail;
+	}
+	
+	public Producteur getProducteur() {
+		DaoProducteur dao = new DaoProducteur();
+		return dao.getByProduit(this);
+	}
+	
+	public boolean setProducteurMail(String producteurMail) {
+		this.producteurMail = producteurMail;
+		return true;
 	}
 	
 	

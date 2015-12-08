@@ -1,11 +1,13 @@
 package fr.esisar.panier.metier;
 
+import fr.esisar.panier.dao.DaoCommande;
+import fr.esisar.panier.dao.DaoProduit;
+
 public class LigneCommande {
 	private int id;
+	private int idCommande;
 	private int quantite;
-	private Produit produit;
-	
-	
+	private String produitNom;
 	
 	/**
 	 * 
@@ -25,7 +27,7 @@ public class LigneCommande {
 	 */
 	public boolean setId(int id) {
 		this.id = id;
-		return false;
+		return true;
 	}
 	/**
 	 * @return the quantite
@@ -37,6 +39,7 @@ public class LigneCommande {
 	 * @param quantite the quantite to set
 	 */
 	public boolean setQuantite(int quantite) {
+		if(quantite <= 0 || quantite > 10000) return false;
 		this.quantite = quantite;
 		return false;
 	}
@@ -44,14 +47,36 @@ public class LigneCommande {
 	 * @return the produit
 	 */
 	public Produit getProduit() {
-		return produit;
+		DaoProduit dao = new DaoProduit();
+		return dao.getByNom(produitNom);
+	}
+	/**
+	 * @return the produit
+	 */
+	public String getProduitNom() {
+		return produitNom;
 	}
 	/**
 	 * @param produit the produit to set
 	 */
-	public boolean setProduit(Produit produit) {
-		this.produit = produit;
-		return false;
+	public boolean setProduitNom(String produitNom) {
+		if(produitNom == null || produitNom.isEmpty()) return false;
+		this.produitNom = produitNom;
+		return true;
+	}
+
+	public int getIdCommande() {
+		return idCommande;
+	}
+
+	public boolean setIdCommande(int idCommande) {
+		this.idCommande = idCommande;
+		return true;
+	}
+	
+	public Commande getCommande() {
+		DaoCommande dao = new DaoCommande();
+		return dao.getById(idCommande);
 	}
 	
 	

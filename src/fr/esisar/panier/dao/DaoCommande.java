@@ -30,4 +30,9 @@ public class DaoCommande implements LoDao<Commande> {
 		return false;
 	}
 
+	public Commande getById(int idCommande) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

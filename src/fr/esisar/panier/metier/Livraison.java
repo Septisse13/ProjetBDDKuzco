@@ -2,9 +2,11 @@ package fr.esisar.panier.metier;
 
 import java.util.Date;
 
+import fr.esisar.panier.dao.DaoCalendrier;
+
 public class Livraison {
 	private Date dateLivraison;
-
+	private Date calendrierBegin;
 	/**
 	 * 
 	 */
@@ -32,8 +34,21 @@ public class Livraison {
 	 */
 	public boolean setDateLivraison(Date dateLivraison) {
 		this.dateLivraison = dateLivraison;
-		return false;
+		return true;
 	}
 	
+	public boolean setCalendrierBegin(Date calendrierBegin) {
+		this.calendrierBegin = calendrierBegin;
+		return true;
+	}
+	
+	public Calendrier getCalendrier() {
+		DaoCalendrier dao = new DaoCalendrier();
+		return dao.getByLivraison(this);
+	}
+	
+	public Date getCalendierBegin() {
+		return this.calendrierBegin;
+	}
 	
 }

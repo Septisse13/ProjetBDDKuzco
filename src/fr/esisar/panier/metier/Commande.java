@@ -1,13 +1,15 @@
 package fr.esisar.panier.metier;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
+
+import fr.esisar.panier.dao.DaoLigneCommande;
 
 public class Commande {
 	private int id;
-	private ArrayList<LigneCommande> lignes;
+	private Map<Integer,LigneCommande> lignes;
 	private Livraison livraison;
-	
-	
 	
 	/**
 	 * 
@@ -26,20 +28,22 @@ public class Commande {
 	 */
 	public boolean setId(int id) {
 		this.id = id;
-		return false;
+		return true;
 	}
 	/**
 	 * @return the lignes
 	 */
-	public ArrayList<LigneCommande> getLignes() {
-		return lignes;
+	public Collection<LigneCommande> getLignes() {
+		return lignes.values();
 	}
 	/**
 	 * @param lignes the lignes to set
 	 */
-	public boolean setLignes(ArrayList<LigneCommande> lignes) {
-		this.lignes = lignes;
-		return false;
+	public boolean setLignes(Collection<LigneCommande> lignes) {
+		for (LigneCommande ligneCommande : lignes) {
+			this.lignes.put(ligneCommande.getId(), ligneCommande);
+		}
+		return true;
 	}
 	/**
 	 * @return the livraison
@@ -52,7 +56,15 @@ public class Commande {
 	 */
 	public boolean setLivraison(Livraison livraison) {
 		this.livraison = livraison;
-		return false;
+		return true;
+	}
+	
+	public boolean addLigneCommande(LigneCommande newLigne) {
+		this.lignes.put(newLigne.getId(), newLigne);
+		newLigne.setIdCommande(getId());
+		DaoLigneCommande daoLigne = new DaoLigneCommande();
+		daoLigne.create(newLigne);
+		return true;
 	}
 	
 	
