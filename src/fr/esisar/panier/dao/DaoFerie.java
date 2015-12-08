@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.Locale;
 
 import fr.esisar.panier.connexionBDD.Connexion;
+import fr.esisar.panier.metier.Calendrier;
 import fr.esisar.panier.metier.Ferie;
 import fr.esisar.panier.metier.Livraison;
 
 public class DaoFerie implements LoDao<Ferie> {
 
-	@Override
 	public List<Ferie> find(String conditions) {
 		/*
 		 * SELECT begin, end, calendrierBegin FROM Ferie 
@@ -135,6 +135,12 @@ public class DaoFerie implements LoDao<Ferie> {
 		}
 
 		return true;
+	}
+	
+	public static  Ferie getByCalendrier (Calendrier c){
+		List<Ferie> liste;
+		liste=find("Ferie.dateDebutFerie='"+c.getBegin()+"';");
+		return liste.get(1);
 	}
 
 }

@@ -10,6 +10,7 @@ import java.util.List;
 
 import fr.esisar.panier.connexionBDD.Connexion;
 import fr.esisar.panier.metier.Producteur;
+import fr.esisar.panier.metier.Produit;
 
 public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteur> {
 
@@ -179,6 +180,17 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 	public Producteur getByMail(String mail) {
 		List<Producteur> liste;
 		liste=find("Producteur.mail='"+mail+"'");
+		
+		// Envoyer la requête -> find le fait
+		// Exploiter résultat -> find le fait
+		// Renvoyer List<Producteur>
+		return liste.get(1);
+	}
+	
+	
+	public Producteur getByProduit(Produit produit) {
+		List<Producteur> liste;
+		liste=find("Producteur.mail='"+produit.getProducteur()+"'");
 		
 		// Envoyer la requête -> find le fait
 		// Exploiter résultat -> find le fait

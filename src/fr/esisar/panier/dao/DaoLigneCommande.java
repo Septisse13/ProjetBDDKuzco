@@ -56,7 +56,7 @@ public class DaoLigneCommande implements LoDao<LigneCommande> {
 				String s2 = resultats.getString(2);
 				
 				String s3 = resultats.getString(3);
-				Produit produit = new Produit(s3);
+
 				String s4 = resultats.getString(4);
 				
 				String s5 = resultats.getString(5);
@@ -68,7 +68,7 @@ public class DaoLigneCommande implements LoDao<LigneCommande> {
 					bool=false;
 				}
 				
-				LigneCommande p = new LigneCommande(Integer.parseInt(s1),Integer.parseInt(s2),produit,Integer.parseInt(s4),bool);
+				LigneCommande p = new LigneCommande(Integer.parseInt(s1),Integer.parseInt(s2),Integer.parseInt(s4),s3,bool);
 				liste.add(p);
 				encore = resultats.next();
 			}

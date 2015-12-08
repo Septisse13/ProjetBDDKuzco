@@ -8,16 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
 import fr.esisar.panier.metier.Commande;
-=======
+
 import fr.esisar.panier.connexionBDD.Connexion;
 import fr.esisar.panier.metier.Consommateur;
 import fr.esisar.panier.metier.Producteur;
 import fr.esisar.panier.metier.Consommateur;
->>>>>>> origin/master
-import fr.esisar.panier.metier.Consommateur;
-
 public class DaoConsommateur implements LoDao<Consommateur>, LoDaoPersonne<Consommateur> {
 
 

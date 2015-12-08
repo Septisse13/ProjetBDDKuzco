@@ -21,6 +21,15 @@ public class Livraison {
 		super();
 		this.dateLivraison = dateLivraison;
 	}
+	
+	/**
+	 * @param dateLivraison
+	 */
+	public Livraison(Date dateLivraison, Date calendrierBegin) {
+		super();
+		this.dateLivraison = dateLivraison;
+		this.calendrierBegin = calendrierBegin;
+	}
 
 	/**
 	 * @return the dateLivraison

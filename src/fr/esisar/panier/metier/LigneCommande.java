@@ -8,12 +8,25 @@ public class LigneCommande {
 	private int idCommande;
 	private int quantite;
 	private String produitNom;
+	private boolean isDelivered;
 	
 	/**
 	 * 
 	 */
 	public LigneCommande() {
 		super();
+	}
+	
+	/**
+	 * 
+	 */
+	public LigneCommande(int id, int idCommande, int quantite, String produitNom, boolean isDelivered) {
+		super();
+		this.id=id;
+		this.idCommande=idCommande;
+		this.quantite=quantite;
+		this.produitNom=produitNom;
+		this.isDelivered=isDelivered;
 	}
 	
 	/**
@@ -79,5 +92,8 @@ public class LigneCommande {
 		return dao.getById(idCommande);
 	}
 	
+	public boolean isDelivered(){
+		return this.isDelivered;
+	}
 	
 }
