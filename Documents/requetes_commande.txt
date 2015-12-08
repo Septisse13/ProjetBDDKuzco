@@ -1,0 +1,17 @@
+COMMANDE
+	idCommande NUMBER(*,0),
+	mail VARCHAR2(200) NOT NULL,
+	dateDebutSemestre DATE NOT NULL,
+	dateLivraison DATE NOT NULL,
+
+****		VPPaniers		****
+Lister toutes les commandes
+SELECT idCommande, nom, prenom, dateLivraison FROM Commande, Consommateur, Personne 
+WHERE Commande.mail=Consommateur.mail 
+AND Personne.mail=Consommateur.mail;
+
+Lister toutes les commandes du semestre en cours (décrit par Calendrier)
+SELECT idCommande, nom, prenom, dateLivraison FROM Commande, Consommateur, Personne, Calendrier 
+WHERE Commande.dateLivraison BETWEEN Calendrier.dateDebutSemestre AND Calendrier.dateFinSemestre
+AND Commande.mail=Consommateur.mail 
+AND Personne.mail=Consommateur.mail;
