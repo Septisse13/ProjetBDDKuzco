@@ -25,6 +25,13 @@ public class Commande {
 	public int getId() {
 		return id;
 	}
+	
+	/**
+	 * @return the map
+	 */
+	public Map<Integer,LigneCommande> getMap() {
+		return lignes;
+	}
 	/**
 	 * @param id the id to set
 	 */

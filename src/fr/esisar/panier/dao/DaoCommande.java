@@ -12,10 +12,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import fr.esisar.panier.connexionBDD.Connexion;
 import fr.esisar.panier.metier.Commande;
+import fr.esisar.panier.metier.LigneCommande;
 import fr.esisar.panier.metier.Livraison;
+import fr.esisar.panier.metier.Produit;
 
 public class DaoCommande implements LoDao<Commande> {
 
@@ -89,9 +93,38 @@ public class DaoCommande implements LoDao<Commande> {
 
 	@Override
 	public boolean create(Commande newRecord) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+			String requete = "INSERT INTO Commande VALUES ("
+					+ newRecord.getId()
+					+",'"
+					+ newRecord.getMailConso()
+					+ "',"
+					+ newRecord.getLivraison().getCalendierBegin()
+					+","
+					+ newRecord.getLivraison().getDateLivraison()
+					+ ");";
+			
+			//Envoyer les requ�tes
+			Connection c1 = Connexion.getConnection();
+			ResultSet resultats = null;
+			try {
+				Statement stmt = c1.createStatement();
+				resultats = stmt.executeQuery(requete);
+				c1.close();
+			}
+			catch(SQLException e){
+				System.out.println("Erreur d'exécution requête");
+				return false;
+			}
+			
+			for(Map.Entry<Integer, LigneCommande> entry : newRecord.getMap().entrySet()){
+															
+				DaoLigneCommande dao = new DaoLigneCommande();
+				dao.create(entry.getValue());
+			}
+			
+			
+			return true;
+		}
 
 	@Override
 	public boolean update(Commande updateRecord) {
@@ -102,12 +135,39 @@ public class DaoCommande implements LoDao<Commande> {
 	@Override
 	public boolean remove(Commande removeRecord) {
 		// TODO Auto-generated method stub
-		return false;
+		
+		
+		
+		for(Map.Entry<Integer, LigneCommande> entry : removeRecord.getMap().entrySet()){
+			
+			DaoLigneCommande dao = new DaoLigneCommande();
+			dao.remove(entry.getValue());
+		}
+		String requete = "DELETE FROM Commande WHERE Commande.idCommande="
+				+ removeRecord.getId()
+				+ ";";
+				
+		
+		//Envoyer la requ�te
+		Connection c1 = Connexion.getConnection();
+		ResultSet resultats = null;
+		try {
+			Statement stmt = c1.createStatement();
+			resultats = stmt.executeQuery(requete);
+			c1.close();
+		}
+		catch(SQLException e){
+			System.out.println("Erreur d'exécution requête");
+			return false;
+		}
+
+		return true;
 	}
 
 	public Commande getById(int idCommande) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Commande> liste;
+		liste=find("idCommande="+idCommande);
+		return liste.get(1);
 	}
 
 }
