@@ -8,8 +8,7 @@ import java.sql.Statement;
 
 public class ConnectionTest {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException{
-		Connexion C1 = new Connexion();
-		Connection c1 = C1.getConnection();
+		Connection c1 = Connexion.getConnection();
 		
 		
 		ResultSet resultats = null;
