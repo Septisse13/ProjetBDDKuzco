@@ -83,7 +83,7 @@ public class DaoProducteur implements LoDaoPersonne<Producteur>, LoDao<Producteu
 				+ newRecord.getNom()
 				+ "');";
 		
-		String requete_producteur = "INSERT INTO Personne VALUES ('"
+		String requete_producteur = "INSERT INTO Producteur VALUES ('"
 				+ newRecord.getMail()
 				+"','"
 				+ newRecord.getOrdreCheque()
