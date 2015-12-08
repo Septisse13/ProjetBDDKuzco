@@ -97,4 +97,11 @@ public class Calendrier {
 		dao.create(newLivraison);
 		return true;
 	}
+	
+	public boolean removeLivraison(Livraison oldLivraison) {
+		livraisons.remove(oldLivraison.getDateLivraison());
+		DaoLivraison dao = new DaoLivraison();
+		dao.remove(oldLivraison);
+		return true;
+	}
 }

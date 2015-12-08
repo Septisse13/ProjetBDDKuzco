@@ -40,8 +40,9 @@ public class Produit {
 	 * @param nom the nom to set
 	 */
 	public boolean setNom(String nom) {
+		if(nom == null || nom.isEmpty()) return false;
 		this.nom = nom;
-		return false;
+		return true;
 	}
 	/**
 	 * @return the prix
@@ -53,8 +54,9 @@ public class Produit {
 	 * @param prix the prix to set
 	 */
 	public boolean setPrix(float prix) {
+		if(prix <= 0 || prix > 10000) return false;
 		this.prix = prix;
-		return false;
+		return true;
 	}
 	
 	public String getProducteurMail() {
@@ -67,6 +69,7 @@ public class Produit {
 	}
 	
 	public boolean setProducteurMail(String producteurMail) {
+		if(producteurMail == null || producteurMail.isEmpty()) return false;
 		this.producteurMail = producteurMail;
 		return true;
 	}

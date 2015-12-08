@@ -67,5 +67,18 @@ public class Commande {
 		return true;
 	}
 	
+	public boolean removeLigneCommande(LigneCommande oldLigne) {
+		this.lignes.remove(oldLigne.getId());
+		DaoLigneCommande daoLigne = new DaoLigneCommande();
+		daoLigne.remove(oldLigne);
+		return true;
+	}
+	
+	public boolean updateLigneCommande(LigneCommande updLigne) {
+		DaoLigneCommande daoLigne = new DaoLigneCommande();
+		daoLigne.update(updLigne);
+		return true;
+	}
+	
 	
 }

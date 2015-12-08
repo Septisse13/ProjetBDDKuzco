@@ -30,8 +30,9 @@ public class Producteur extends Personne {
 	 * @param ordreCheque the ordreCheque to set
 	 */
 	public boolean setOrdreCheque(String ordreCheque) {
+		if(ordreCheque == null || ordreCheque.isEmpty()) return false;
 		this.ordreCheque = ordreCheque;
-		return false;
+		return true;
 	}
 
 	public boolean isPaid() {

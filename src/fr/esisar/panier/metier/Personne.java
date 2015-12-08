@@ -33,6 +33,7 @@ public class Personne {
 	 * @param mail the mail to set
 	 */
 	public boolean setMail(String mail) {
+		if(mail == null || mail.isEmpty()) return false;
 		this.mail = mail;
 		return false;
 	}
@@ -46,8 +47,9 @@ public class Personne {
 	 * @param nom the nom to set
 	 */
 	public boolean setNom(String nom) {
+		if(nom == null || nom.isEmpty()) return false;
 		this.nom = nom;
-		return false;
+		return true;
 	}
 	/**
 	 * @return the prenom
@@ -59,8 +61,9 @@ public class Personne {
 	 * @param prenom the prenom to set
 	 */
 	public boolean setPrenom(String prenom) {
+		if(prenom == null || prenom.isEmpty()) return false;
 		this.prenom = prenom;
-		return false;
+		return true;
 	}
 	
 	

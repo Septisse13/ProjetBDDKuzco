@@ -2,9 +2,13 @@ package fr.esisar.panier.metier;
 
 import java.util.Date;
 
+import fr.esisar.panier.dao.DaoCalendrier;
+import fr.esisar.panier.dao.DaoFerie;
+
 public class Ferie {
 	private Date begin;
 	private Date end;
+	private Date calendrierBegin;
 	
 	/**
 	 * 
@@ -34,7 +38,7 @@ public class Ferie {
 	 */
 	public boolean setBegin(Date begin) {
 		this.begin = begin;
-		return false;
+		return true;
 	}
 	/**
 	 * @return the end
@@ -47,8 +51,16 @@ public class Ferie {
 	 */
 	public boolean setEnd(Date end) {
 		this.end = end;
-		return false;
+		return true;
 	}
 	
+	public Date getCalendrierBegin() {
+		return calendrierBegin;
+	}
+	
+	public Calendrier getCalendrier() {
+		DaoCalendrier dao = new DaoCalendrier();
+		return dao.getByFerie(this);
+	}
 	
 }

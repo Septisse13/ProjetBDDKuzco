@@ -3,6 +3,7 @@ package fr.esisar.panier.dao;
 import java.util.List;
 
 import fr.esisar.panier.metier.Calendrier;
+import fr.esisar.panier.metier.Ferie;
 import fr.esisar.panier.metier.Livraison;
 
 public class DaoCalendrier implements LoDao<Calendrier> {
@@ -32,6 +33,11 @@ public class DaoCalendrier implements LoDao<Calendrier> {
 	}
 	
 	public Calendrier getByLivraison(Livraison livraison) {
+		// TODO
+		return null;
+	}
+	
+	public Calendrier getByFerie(Ferie ferie) {
 		// TODO
 		return null;
 	}
