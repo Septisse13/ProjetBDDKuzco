@@ -54,6 +54,11 @@ public class Ferie {
 		return true;
 	}
 	
+	public boolean setCalendrierBegin(Date calendrierBegin) {
+		this.calendrierBegin = calendrierBegin;
+		return true;
+	}
+	
 	public Date getCalendrierBegin() {
 		return calendrierBegin;
 	}

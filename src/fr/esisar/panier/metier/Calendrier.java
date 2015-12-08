@@ -3,6 +3,7 @@ package fr.esisar.panier.metier;
 import java.util.Date;
 import java.util.Map;
 
+import fr.esisar.panier.dao.DaoFerie;
 import fr.esisar.panier.dao.DaoLivraison;
 
 public class Calendrier {
@@ -13,6 +14,7 @@ public class Calendrier {
 	private Date dateLimCom;
 	
 	private Map<Date, Livraison> livraisons;
+	private Map<Date, Ferie> feries;
 	
 	private Calendrier() {
 		super();
@@ -82,12 +84,29 @@ public class Calendrier {
 	public Date getDateLimCom() {
 		return dateLimCom;
 	}
+	
 	/**
 	 * @param dateLimCom the dateLimCom to set
 	 */
 	public boolean setDateLimCom(Date dateLimCom) {
 		this.dateLimCom = dateLimCom;
 		return true;
+	}
+	
+	public Map<Date, Livraison> getLivraisons() {
+		return livraisons;
+	}
+
+	public void setLivraisons(Map<Date, Livraison> livraisons) {
+		this.livraisons = livraisons;
+	}
+
+	public Map<Date, Ferie> getFeries() {
+		return feries;
+	}
+
+	public void setFeries(Map<Date, Ferie> feries) {
+		this.feries = feries;
 	}
 	
 	public boolean addLivraison(Livraison newLivraison) {
@@ -102,6 +121,21 @@ public class Calendrier {
 		livraisons.remove(oldLivraison.getDateLivraison());
 		DaoLivraison dao = new DaoLivraison();
 		dao.remove(oldLivraison);
+		return true;
+	}
+	
+	public boolean addFerie(Ferie newFerie) {
+		feries.put(newFerie.getBegin(), newFerie);
+		newFerie.setCalendrierBegin(begin);
+		DaoFerie dao = new DaoFerie();
+		dao.create(newFerie);
+		return true;
+	}
+	
+	public boolean removeFerie(Ferie oldFerie) {
+		feries.remove(oldFerie.getBegin());
+		DaoFerie dao = new DaoFerie();
+		dao.remove(oldFerie);
 		return true;
 	}
 }
